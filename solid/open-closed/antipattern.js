@@ -27,6 +27,10 @@ class ProductFilter {
   filterBySize(products, size) {
     return products.filter((product) => product.size === size);
   }
+
+  filterByColorAndSize(products, color, size){
+      return products.filter((p) => p.color === color && p.size === size);
+  }
 }
 
 let apple = new Product("Apple", Color.red, Size.small);
