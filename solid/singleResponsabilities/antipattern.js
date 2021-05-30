@@ -1,4 +1,4 @@
-import fs from "fs";
+const fs = require("fs");
 
 class Journal {
   constructor() {
@@ -21,16 +21,14 @@ class Journal {
   }
 
   save(filename) {
-     fs.writeFileSync(filename, this.toString())
+    fs.writeFileSync(filename, this.toString());
   }
 
   load(filename) {
-      // TODO: to load file
+    // TODO: to load file
   }
 
-  loadFromUrl(url) {
-      
-  }
+  loadFromUrl(url) {}
 }
 
 Journal.count = 0;

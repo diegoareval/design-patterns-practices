@@ -1,4 +1,4 @@
-const fs = require('fs');
+const fs = require("fs");
 
 class Journal {
   constructor() {
@@ -19,21 +19,18 @@ class Journal {
   toString() {
     return Object.values(this.entries).join("\n");
   }
-
 }
 
 class PersistentManager {
-    saveFile(journal, filename) {
-        fs.writeFileSync(filename, journal.toString())
-    }
+  saveFile(journal, filename) {
+    fs.writeFileSync(filename, journal.toString());
+  }
 
-    loadFile(filename) {
-        // TODO: to load file
-    }
+  loadFile(filename) {
+    // TODO: to load file
+  }
 
-    loadFileFromUrl(url) {
-      
-    }
+  loadFileFromUrl(url) {}
 }
 
 Journal.count = 0;
@@ -44,5 +41,5 @@ console.log(j.toString());
 
 // persist file
 let persistManager = PersistentManager();
-const fileName = "fileName"
+const fileName = "fileName";
 persistManager.saveFile(j, fileName);
