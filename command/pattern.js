@@ -1,57 +1,43 @@
-class BankAccount
-{
-  constructor(balance=0)
-  {
+class BankAccount {
+  constructor(balance = 0) {
     this.balance = balance;
   }
 
-  deposit(amount)
-  {
+  deposit(amount) {
     this.balance += amount;
-    console.log(
-      `Deposited ${amount}, balance is now ${this.balance}`
-    );
+    console.log(`Deposited ${amount}, balance is now ${this.balance}`);
   }
 
-  withdraw(amount)
-  {
-    if (this.balance - amount >= BankAccount.overdraftLimit)
-    {
+  withdraw(amount) {
+    if (this.balance - amount >= BankAccount.overdraftLimit) {
       this.balance -= amount;
-      console.log(
-        `Withdrew ${amount}, balance is now ${this.balance}`
-      );
+      console.log(`Withdrew ${amount}, balance is now ${this.balance}`);
       return true;
     }
     return false;
   }
 
-  toString()
-  {
+  toString() {
     return `Balance: ${this.balance}`;
   }
 }
 BankAccount.overdraftLimit = -500;
 
 let Action = Object.freeze({
-  'deposit': 1,
-  'withdraw': 2
+  deposit: 1,
+  withdraw: 2,
 });
 
-class BankAccountCommand
-{
-  constructor(account, action, amount)
-  {
+class BankAccountCommand {
+  constructor(account, action, amount) {
     this.account = account;
     this.action = action;
     this.amount = amount;
     this.succeeded = false;
   }
 
-  call()
-  {
-    switch (this.action)
-    {
+  call() {
+    switch (this.action) {
       case Action.deposit:
         this.account.deposit(this.amount);
         this.succeeded = true;
@@ -62,11 +48,9 @@ class BankAccountCommand
     }
   }
 
-  undo()
-  {
+  undo() {
     if (!this.succeeded) return;
-    switch (this.action)
-    {
+    switch (this.action) {
       case Action.deposit:
         this.account.withdraw(this.amount);
         break;
@@ -83,6 +67,6 @@ let cmd = new BankAccountCommand(ba, Action.withdraw, 650);
 cmd.call();
 console.log(ba.toString());
 
-console.log('Performing undo:');
+console.log("Performing undo:");
 cmd.undo();
 console.log(ba.toString());
