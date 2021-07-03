@@ -8,7 +8,7 @@ class TextRange
     }
 
     covers(position){
-    return position >=this.start && position <=this.end;
+    return position >=this.start && position <= this.end;
     }
 }
 
@@ -45,3 +45,5 @@ const text = "This is a brave new world";
 let bft = new BetterFormattedText(text);
 bft.getRange(10, 15).capitalize = true;
 console.log(bft.toString());
+
+
